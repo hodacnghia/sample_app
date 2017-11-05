@@ -7,8 +7,7 @@ class UsersController < ApplicationController
  end
 
  def show
-  redirect_to root_url and return unless FILL_IN
-
+  @user = User.find(params[:id])
 end
 
 def create
@@ -30,7 +29,7 @@ def create
     redirect_to users_url
   end
   def index
-   @users = User.where(activated: FILL_IN).paginate(page: params[:page])
+   @users = User.paginate(page: params[:page])
  end
  def edit
   @user = User.find(params[:id])
